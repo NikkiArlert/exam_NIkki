@@ -1,0 +1,246 @@
+body{
+    background-color: rgb(57, 57, 57);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+h1{
+    color: aliceblue;
+    text-align: center;
+}
+#gameArea {
+    width: 600px;
+    height: 400px;
+    border: 2px solid #c7c7c7;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    margin-left: 22px;
+    user-select: none; /* Запрещаем выделение текста при кликах */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#startButton {
+    width: 200px;
+    height: 50px;
+    background: linear-gradient(to bottom, #4a7dff, #2a56d6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+}
+#startButton:hover {
+    background: linear-gradient(to bottom, #3a6de8, #1a46c6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+#startButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#target {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: bounding-box;
+}
+[id^="target_"] {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
+    display: block;
+    opacity: 1;
+}
+#scoreArea {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -200px;
+    background: rgba(0, 0, 0, 0.3); /* Легкий фон для выделения */
+    font-family: Arial, Helvetica, sans-serif;
+    width: 600px; /* Такая же ширина как у игрового поля */
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+}
+#modeButtons {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+.mode-btn {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.mode-btn.active {
+    background-color: #007bff;
+}
+.mode-btn:hover {
+    background-color: #555;
+}
+#results {
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+.target-type-switcher {
+    margin: 15px 0;
+    color: white;
+}
+#targetType {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.target.moving {
+    border: 2px solid rgb(39, 157, 13);
+    box-shadow: 0 0 10px rgb(127, 173, 87);
+}
+#topScores {
+    background: rgba(30, 30, 30, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+}
+#topScores h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.1em;
+}
+#topScores ol {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 15px;
+    min-height: 120px; /* Фиксированная высота для 3 строк */
+}
+#topScores li {
+    padding: 6px 0;
+    border-bottom: 1px dashed #444;
+    color: #ccc;
+    font-style: italic;
+}
+#topScores li:last-child {
+    border-bottom: none;
+}
+/* Обертка для топа и кнопки */
+.results-container {
+    position: relative;
+    min-height: 300px; /* Фиксированная высота, чтобы не прыгало */
+    margin-bottom: 20px;
+}
+.target:hover {
+    transform: scale(1.1);
+}
+.target {
+    transition: transform 0.1s;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.target:active {
+    transform: scale(0.95);
+    transition: transform 0.05s;
+}
+.target-type-switcher {
+    margin: 15px 0;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#modeButtons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+.mode-btn {
+    padding: 12px 20px;
+    background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
+    color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    text-align: center;
+}
+.mode-btn:hover {
+    background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+.mode-btn.active {
+    background: linear-gradient(to bottom, #4a7dff, #2a56d6);
+    color: white;
+    box-shadow: 0 4px 8px rgba(42, 86, 214, 0.3);
+}
+.mode-btn.active:hover {
+    background: linear-gradient(to bottom, #5a8dff, #3a66e6);
+}
+/* Анимация при нажатии */
+.mode-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s ease;
+}
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    #modeButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mode-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+/* Стиль кнопки сброса (наследует .mode-btn) */
+#resetScores {
+    background: linear-gradient(to bottom, #ff4a4a, #d62a2a) !important;
+    margin-top: 10px;
+}
+
+#resetScores:hover {
+    background: linear-gradient(to bottom, #ff5a5a, #e63a3a) !important;
+}
+
+#resetScores:active {
+    background: linear-gradient(to bottom, #e63a3a, #c61a1a) !important;
+}
+
+/* Иконки Font Awesome */
+.fas {
+    margin-right: 8px;
+}

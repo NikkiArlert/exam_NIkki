@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reac</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <h1>ReacSpeed</h1>
+
+    <div id="modeButtons">
+        <button class="mode-btn" data-mode="reaction">
+            <i class="fas fa-bolt"></i> Реакция (30 целей)
+        </button>
+        <button class="mode-btn" data-mode="timed">
+            <i class="fas fa-stopwatch"></i> На время (30 сек)
+        </button>
+        <button class="mode-btn" data-mode="fading">
+            <i class="fas fa-hourglass-end"></i> Угасающие цели
+        </button>
+    </div>
+
+    <div style="display: flex; gap: 20px; justify-content: center; align-items: flex-start;">
+        <!-- Топ результатов слева -->
+        <div id="topScores" style="color: white; width: 250px;">
+            <h2>Лучшие результаты:</h2>
+            <div id="topReaction">
+                <h3>Реакция (30 целей):</h3>
+                <ol></ol>
+            </div>
+            <div id="topTimed">
+                <h3>На время (30 сек):</h3>
+                <ol></ol>
+            </div>
+            <div id="topFading">
+                <h3>Угасающие цели:</h3>
+                <ol></ol>
+            </div>
+            <button id="resetScores" class="mode-btn" style="margin-top: 10px;">
+                <i class="fas fa-trash-alt"></i> Сбросить результаты
+            </button>
+        </div>
+
+        
+
+        <div id="gameArea">
+            <div id="target"></div>
+        </div>
+        <!-- Пустой блок для балансировки -->
+        <div style="width: 300px;"></div>
+    </div>
+
+    <div id="scoreArea">
+        <h1>Счет: <span id="score">0</span></h1>
+        <h1>Среднее время реакции: <span id="averageTime">0</span> мс</h1>
+        <h1 id="timerDisplay" style="display: none;">Время: <span id="timer">30</span> сек</h1>
+        <h1 id="healthDisplay" style="display: none;">Здоровье: <span id="health">3</span></h1>
+    </div>
+    <div id="results" style="display: none;">
+        <h1>Игра окончена! Счет: <span id="finalScore">0</span></h1>
+        <h1>Среднее время: <span id="finalAverage">0</span> мс</h1>
+    </div>
+    <div class="target-type-switcher">
+    <label>Тип целей:</label>
+    <select id="targetType">
+        <option value="static">Статичные</option>
+        <option value="moving">Движущиеся</option>
+    </select>
+    </div>
+
+    <button style="width: 200px; height: 50px;" id="startButton">Начать игру</button>
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
